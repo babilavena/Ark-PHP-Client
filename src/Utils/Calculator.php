@@ -156,7 +156,7 @@ class Calculator
      *
      * @return float
      */
-    private function voteWeight(int $value): float
+    public function voteWeight(int $value): float
     {
         return $this->toFixed($value) / $this->votingPool;
     }
