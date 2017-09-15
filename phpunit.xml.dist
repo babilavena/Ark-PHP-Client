@@ -27,4 +27,8 @@
             <directory suffix=".php">src/</directory>
         </whitelist>
     </filter>
+    <php>
+        <env name="ARK_TESTING_SECRET" value=""/>
+        <env name="ARK_TESTING_WIF" value=""/>
+    </php>
 </phpunit>

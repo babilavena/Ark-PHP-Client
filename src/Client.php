@@ -14,6 +14,7 @@ declare(strict_types=1);
 namespace BrianFaust\Ark;
 
 use BrianFaust\Http\Http;
+use BrianFaust\Ark\Utils\Nucleid;
 
 class Client
 {
@@ -29,20 +30,25 @@ class Client
     /** @var string */
     public $version;
 
+    /** @var string */
+    public $path;
+
     /**
      * Create a new Ark client instance.
      *
      * @param string $ip
-     * @param int $port
+     * @param int    $port
      * @param string $nethash
      * @param string $version
+     * @param string $path
      */
-    public function __construct(string $ip, int $port, string $nethash, string $version)
+    public function __construct(string $ip, int $port, string $nethash, string $version, string $path = null)
     {
         $this->ip = $ip;
         $this->port = $port;
         $this->nethash = $nethash;
         $this->version = $version;
+        $this->path = $path ?? '/usr/bin';
     }
 
     /**
@@ -55,11 +61,11 @@ class Client
         $client = Http::withBaseUri("http://{$this->ip}:{$this->port}/")->withHeaders([
             'nethash' => $this->nethash,
             'version' => $this->version,
-            'port'    => $this->port,
+            'port'    => 1,
         ]);
 
         $class = "BrianFaust\\Ark\\API\\{$name}";
 
-        return new $class($client);
+        return new $class($client, new Nucleid($this->path));
     }
 }

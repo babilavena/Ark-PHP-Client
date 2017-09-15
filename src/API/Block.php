@@ -13,7 +13,7 @@ declare(strict_types=1);
 
 namespace BrianFaust\Ark\API;
 
-use BrianFaust\Http\HttpResponse;
+use Illuminate\Support\Collection;
 
 class Block extends AbstractAPI
 {
@@ -22,11 +22,11 @@ class Block extends AbstractAPI
      *
      * @param string $id
      *
-     * @return \BrianFaust\Http\HttpResponse
+     * @return \Illuminate\Support\Collection
      */
-    public function block(string $id): HttpResponse
+    public function block(string $id): Collection
     {
-        return $this->client->get('api/blocks/get', compact('id'));
+        return $this->get('api/blocks/get', compact('id'));
     }
 
     /**
@@ -34,100 +34,100 @@ class Block extends AbstractAPI
      *
      * @param array $parameters
      *
-     * @return \BrianFaust\Http\HttpResponse
+     * @return \Illuminate\Support\Collection
      */
-    public function blocks(array $parameters = []): HttpResponse
+    public function blocks(array $parameters = []): Collection
     {
-        return $this->client->get('api/blocks', $parameters);
+        return $this->get('api/blocks', $parameters);
     }
 
     /**
      * Get the blockchain epoch.
      *
-     * @return \BrianFaust\Http\HttpResponse
+     * @return \Illuminate\Support\Collection
      */
-    public function epoch(): HttpResponse
+    public function epoch(): Collection
     {
-        return $this->client->get('api/blocks/getEpoch');
+        return $this->get('api/blocks/getEpoch');
     }
 
     /**
      * Get the blockchain height.
      *
-     * @return \BrianFaust\Http\HttpResponse
+     * @return \Illuminate\Support\Collection
      */
-    public function height(): HttpResponse
+    public function height(): Collection
     {
-        return $this->client->get('api/blocks/getHeight');
+        return $this->get('api/blocks/getHeight');
     }
 
     /**
      * Get the blockchain nethash.
      *
-     * @return \BrianFaust\Http\HttpResponse
+     * @return \Illuminate\Support\Collection
      */
-    public function nethash(): HttpResponse
+    public function nethash(): Collection
     {
-        return $this->client->get('api/blocks/getNethash');
+        return $this->get('api/blocks/getNethash');
     }
 
     /**
      * Get the transaction fee for sending "normal" transactions.
      *
-     * @return \BrianFaust\Http\HttpResponse
+     * @return \Illuminate\Support\Collection
      */
-    public function fee(): HttpResponse
+    public function fee(): Collection
     {
-        return $this->client->get('api/blocks/getFee');
+        return $this->get('api/blocks/getFee');
     }
 
     /**
      * Get the network fees.
      *
-     * @return \BrianFaust\Http\HttpResponse
+     * @return \Illuminate\Support\Collection
      */
-    public function fees(): HttpResponse
+    public function fees(): Collection
     {
-        return $this->client->get('api/blocks/getFees');
+        return $this->get('api/blocks/getFees')['fees'];
     }
 
     /**
      * Get the blockchain milestone.
      *
-     * @return \BrianFaust\Http\HttpResponse
+     * @return \Illuminate\Support\Collection
      */
-    public function milestone(): HttpResponse
+    public function milestone(): Collection
     {
-        return $this->client->get('api/blocks/getMilestone');
+        return $this->get('api/blocks/getMilestone');
     }
 
     /**
      * Get the blockchain reward.
      *
-     * @return \BrianFaust\Http\HttpResponse
+     * @return \Illuminate\Support\Collection
      */
-    public function reward(): HttpResponse
+    public function reward(): Collection
     {
-        return $this->client->get('api/blocks/getReward');
+        return $this->get('api/blocks/getReward');
     }
 
     /**
      * Get the blockchain supply.
      *
-     * @return \BrianFaust\Http\HttpResponse
+     * @return \Illuminate\Support\Collection
      */
-    public function supply(): HttpResponse
+    public function supply(): Collection
     {
-        return $this->client->get('api/blocks/getSupply');
+        return $this->get('api/blocks/getSupply');
     }
 
     /**
      * Get the blockchain status.
      *
-     * @return \BrianFaust\Http\HttpResponse
+     * @return \Illuminate\Support\Collection
      */
-    public function status(): HttpResponse
+    public function status(): Collection
     {
-        return $this->client->get('api/blocks/getStatus');
+        return $this->get('api/blocks/getStatus');
     }
 }

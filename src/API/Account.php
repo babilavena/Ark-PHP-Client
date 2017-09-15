@@ -13,7 +13,7 @@ declare(strict_types=1);
 
 namespace BrianFaust\Ark\API;
 
-use BrianFaust\Http\HttpResponse;
+use Illuminate\Support\Collection;
 
 class Account extends AbstractAPI
 {
@@ -22,11 +22,11 @@ class Account extends AbstractAPI
      *
      * @param string $address
      *
-     * @return \BrianFaust\Http\HttpResponse
+     * @return \Illuminate\Support\Collection
      */
-    public function balance(string $address): HttpResponse
+    public function balance(string $address): Collection
     {
-        return $this->client->get('api/accounts/getBalance', compact('address'));
+        return $this->get('api/accounts/getBalance', compact('address'));
     }
 
     /**
@@ -34,11 +34,11 @@ class Account extends AbstractAPI
      *
      * @param string $address
      *
-     * @return \BrianFaust\Http\HttpResponse
+     * @return \Illuminate\Support\Collection
      */
-    public function publickey(string $address): HttpResponse
+    public function publickey(string $address): Collection
     {
-        return $this->client->get('api/accounts/getPublickey', compact('address'));
+        return $this->get('api/accounts/getPublickey', compact('address'));
     }
 
     /**
@@ -46,11 +46,11 @@ class Account extends AbstractAPI
      *
      * @param string $address
      *
-     * @return \BrianFaust\Http\HttpResponse
+     * @return \Illuminate\Support\Collection
      */
-    public function delegates(string $address): HttpResponse
+    public function delegates(string $address): Collection
     {
-        return $this->client->get('api/accounts/delegates', compact('address'));
+        return $this->get('api/accounts/delegates', compact('address'));
     }
 
     /**
@@ -58,11 +58,11 @@ class Account extends AbstractAPI
      *
      * @param string $address
      *
-     * @return \BrianFaust\Http\HttpResponse
+     * @return \Illuminate\Support\Collection
      */
-    public function delegatesFee(string $address): HttpResponse
+    public function delegatesFee(string $address): Collection
     {
-        return $this->client->get('api/accounts/delegates/fee', compact('address'));
+        return $this->get('api/accounts/delegates/fee', compact('address'));
     }
 
     /**
@@ -72,11 +72,11 @@ class Account extends AbstractAPI
      * @param string $publicKey
      * @param string $secondSecret
      *
-     * @return \BrianFaust\Http\HttpResponse
+     * @return \Illuminate\Support\Collection
      */
-    public function createDelegates(string $secret, string $publicKey, string $secondSecret): HttpResponse
+    public function createDelegates(string $secret, string $publicKey, string $secondSecret): Collection
     {
-        return $this->client->put('api/accounts/delegates', compact('secret', 'publicKey', 'secondSecret'));
+        return $this->put('api/accounts/delegates', compact('secret', 'publicKey', 'secondSecret'));
     }
 
     /**
@@ -84,34 +84,40 @@ class Account extends AbstractAPI
      *
      * @param string $address
      *
-     * @return \BrianFaust\Http\HttpResponse
+     * @return \Illuminate\Support\Collection
      */
-    public function account(string $address): HttpResponse
+    public function account(string $address): Collection
     {
-        return $this->client->get('api/accounts', compact('address'));
+        return $this->get('api/accounts', compact('address'));
     }
 
     /**
-     * @return \BrianFaust\Http\HttpResponse
+     * Get a list of accounts.
+     *
+     * @return \Illuminate\Support\Collection
      */
-    public function accounts(): HttpResponse
+    public function accounts(): Collection
     {
-        return $this->client->get('api/accounts/getAllAccounts');
+        return $this->get('api/accounts/getAllAccounts');
     }
 
     /**
-     * @return \BrianFaust\Http\HttpResponse
+     * Get a list of top accounts.
+     *
+     * @return \Illuminate\Support\Collection
      */
-    public function top(): HttpResponse
+    public function top(): Collection
     {
-        return $this->client->get('api/accounts/top');
+        return $this->get('api/accounts/top');
     }
 
     /**
-     * @return \BrianFaust\Http\HttpResponse
+     * Get the count of accounts.
+     *
+     * @return \Illuminate\Support\Collection
      */
-    public function count(): HttpResponse
+    public function count(): Collection
     {
-        return $this->client->get('api/accounts/count');
+        return $this->get('api/accounts/count');
     }
 }

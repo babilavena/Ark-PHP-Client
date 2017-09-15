@@ -22,27 +22,27 @@ class MultiSignatureTest extends TestCase
     public function can_pending()
     {
         // Arrange...
-        $publicKey = str_random(34);
+        $publicKey = 'Aan1H7m2T6yBVGjRBAa8HYW8xdfoPmrNwD';
 
         // Act...
         $response = $this->getClient()->api('MultiSignature')->pending($publicKey);
 
         // Assert...
-        $this->assertTrue($response->isSuccess());
+        $this->assertInstanceOf('Illuminate\Support\Collection', $response);
     }
 
     /** @test */
     public function can_sign()
     {
         // Arrange...
-        $transactionId = str_random(34);
-        $secret = str_random(34);
+        $transactionId = 'Aan1H7m2T6yBVGjRBAa8HYW8xdfoPmrNwD';
+        $secret = 'Aan1H7m2T6yBVGjRBAa8HYW8xdfoPmrNwD';
 
         // Act...
         $response = $this->getClient()->api('MultiSignature')->sign($transactionId, $secret);
 
         // Assert...
-        $this->assertTrue($response->isSuccess());
+        $this->assertInstanceOf('Illuminate\Support\Collection', $response);
     }
 
     /** @test */
@@ -51,26 +51,26 @@ class MultiSignatureTest extends TestCase
         // Arrange...
         $min = rand();
         $lifetime = rand();
-        $keysgroup = str_random(34);
-        $secret = str_random(34);
+        $keysgroup = 'Aan1H7m2T6yBVGjRBAa8HYW8xdfoPmrNwD';
+        $secret = 'Aan1H7m2T6yBVGjRBAa8HYW8xdfoPmrNwD';
 
         // Act...
         $response = $this->getClient()->api('MultiSignature')->create($min, $lifetime, $keysgroup, $secret);
 
         // Assert...
-        $this->assertTrue($response->isSuccess());
+        $this->assertInstanceOf('Illuminate\Support\Collection', $response);
     }
 
     /** @test */
     public function can_get_accounts()
     {
         // Arrange...
-        $publicKey = str_random(34);
+        $publicKey = 'Aan1H7m2T6yBVGjRBAa8HYW8xdfoPmrNwD';
 
         // Act...
         $response = $this->getClient()->api('MultiSignature')->accounts($publicKey);
 
         // Assert...
-        $this->assertTrue($response->isSuccess());
+        $this->assertInstanceOf('Illuminate\Support\Collection', $response);
     }
 }

@@ -28,7 +28,7 @@ class TransactionTest extends TestCase
         $response = $this->getClient()->api('Transaction')->transaction($id);
 
         // Assert...
-        $this->assertTrue($response->isSuccess());
+        $this->assertInstanceOf('Illuminate\Support\Collection', $response);
     }
 
     /** @test */
@@ -38,7 +38,7 @@ class TransactionTest extends TestCase
         $response = $this->getClient()->api('Transaction')->transactions();
 
         // Assert...
-        $this->assertTrue($response->isSuccess());
+        $this->assertInstanceOf('Illuminate\Support\Collection', $response);
     }
 
     /** @test */
@@ -51,7 +51,7 @@ class TransactionTest extends TestCase
         $response = $this->getClient()->api('Transaction')->unconfirmedTransaction($id);
 
         // Assert...
-        $this->assertTrue($response->isSuccess());
+        $this->assertInstanceOf('Illuminate\Support\Collection', $response);
     }
 
     /** @test */
@@ -61,21 +61,21 @@ class TransactionTest extends TestCase
         $response = $this->getClient()->api('Transaction')->unconfirmedTransactions();
 
         // Assert...
-        $this->assertTrue($response->isSuccess());
+        $this->assertInstanceOf('Illuminate\Support\Collection', $response);
     }
 
     /** @test */
     public function can_add_transactions()
     {
         // Arrange...
-        $secret = str_random(34);
+        $secret = 'Aan1H7m2T6yBVGjRBAa8HYW8xdfoPmrNwD';
         $amount = rand();
-        $recipientId = str_random(34);
+        $recipientId = 'Aan1H7m2T6yBVGjRBAa8HYW8xdfoPmrNwD';
 
         // Act...
         $response = $this->getClient()->api('Transaction')->create($secret, $amount, $recipientId);
 
         // Assert...
-        $this->assertTrue($response->isSuccess());
+        $this->assertInstanceOf('Illuminate\Support\Collection', $response);
     }
 }

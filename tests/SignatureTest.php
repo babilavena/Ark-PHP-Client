@@ -25,20 +25,20 @@ class SignatureTest extends TestCase
         $response = $this->getClient()->api('Signature')->fee();
 
         // Assert...
-        $this->assertTrue($response->isSuccess());
+        $this->assertInstanceOf('Illuminate\Support\Collection', $response);
     }
 
     /** @test */
     public function can_add_signature()
     {
         // Arrange...
-        $secret = str_random(34);
-        $secondSecret = str_random(34);
+        $secret = 'Aan1H7m2T6yBVGjRBAa8HYW8xdfoPmrNwD';
+        $secondSecret = 'Aan1H7m2T6yBVGjRBAa8HYW8xdfoPmrNwD';
 
         // Act...
         $response = $this->getClient()->api('Signature')->create($secret, $secondSecret);
 
         // Assert...
-        $this->assertTrue($response->isSuccess());
+        $this->assertInstanceOf('Illuminate\Support\Collection', $response);
     }
 }

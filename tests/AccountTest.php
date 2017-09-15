@@ -30,7 +30,7 @@ class AccountTest extends TestCase
         $response = $this->getClient()->api('Account')->balance($address);
 
         // Assert...
-        $this->assertTrue($response->isSuccess());
+        $this->assertInstanceOf('Illuminate\Support\Collection', $response);
     }
 
     /** @test */
@@ -43,60 +43,60 @@ class AccountTest extends TestCase
         $response = $this->getClient()->api('Account')->publicKey($address);
 
         // Assert...
-        $this->assertTrue($response->isSuccess());
+        $this->assertInstanceOf('Illuminate\Support\Collection', $response);
     }
 
     /** @test */
     public function can_get_delegates()
     {
         // Arrange...
-        $address = str_random(34);
+        $address = 'Aan1H7m2T6yBVGjRBAa8HYW8xdfoPmrNwD';
 
         // Act...
         $response = $this->getClient()->api('Account')->delegates($address);
 
         // Assert...
-        $this->assertTrue($response->isSuccess());
+        $this->assertInstanceOf('Illuminate\Support\Collection', $response);
     }
 
     /** @test */
     public function can_get_delegates_fee()
     {
         // Arrange...
-        $address = str_random(34);
+        $address = 'Aan1H7m2T6yBVGjRBAa8HYW8xdfoPmrNwD';
 
         // Act...
         $response = $this->getClient()->api('Account')->delegatesFee($address);
 
         // Assert...
-        $this->assertTrue($response->isSuccess());
+        $this->assertInstanceOf('Illuminate\Support\Collection', $response);
     }
 
     /** @test */
     public function can_add_delegates()
     {
         // Arrange...
-        $secret = str_random(34);
-        $publicKey = str_random(34);
-        $secondSecret = str_random(34);
+        $secret = 'Aan1H7m2T6yBVGjRBAa8HYW8xdfoPmrNwD';
+        $publicKey = 'Aan1H7m2T6yBVGjRBAa8HYW8xdfoPmrNwD';
+        $secondSecret = 'Aan1H7m2T6yBVGjRBAa8HYW8xdfoPmrNwD';
 
         // Act...
         $response = $this->getClient()->api('Account')->createDelegates($secret, $publicKey, $secondSecret);
 
         // Assert...
-        $this->assertTrue($response->isSuccess());
+        $this->assertInstanceOf('Illuminate\Support\Collection', $response);
     }
 
     /** @test */
     public function can_get_account()
     {
         // Arrange...
-        $address = str_random(34);
+        $address = 'Aan1H7m2T6yBVGjRBAa8HYW8xdfoPmrNwD';
 
         // Act...
         $response = $this->getClient()->api('Account')->account($address);
 
         // Assert...
-        $this->assertTrue($response->isSuccess());
+        $this->assertInstanceOf('Illuminate\Support\Collection', $response);
     }
 }

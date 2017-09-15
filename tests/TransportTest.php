@@ -25,7 +25,7 @@ class TransportTest extends TestCase
         $response = $this->getClient()->api('Transport')->list();
 
         // Assert...
-        $this->assertTrue($response->isSuccess());
+        $this->assertInstanceOf('Illuminate\Support\Collection', $response);
     }
 
     /** @test */
@@ -38,7 +38,7 @@ class TransportTest extends TestCase
         $response = $this->getClient()->api('Transport')->blocksCommon($ids);
 
         // Assert...
-        $this->assertTrue($response->isSuccess());
+        $this->assertInstanceOf('Illuminate\Support\Collection', $response);
     }
 
     /** @test */
@@ -48,7 +48,7 @@ class TransportTest extends TestCase
         $response = $this->getClient()->api('Transport')->blocks();
 
         // Assert...
-        $this->assertTrue($response->isSuccess());
+        $this->assertInstanceOf('Illuminate\Support\Collection', $response);
     }
 
     /** @test */
@@ -61,7 +61,7 @@ class TransportTest extends TestCase
         $response = $this->getClient()->api('Transport')->block($id);
 
         // Assert...
-        $this->assertTrue($response->isSuccess());
+        $this->assertInstanceOf('Illuminate\Support\Collection', $response);
     }
 
     /** @test */
@@ -74,7 +74,7 @@ class TransportTest extends TestCase
         $response = $this->getClient()->api('Transport')->createBlock($block);
 
         // Assert...
-        $this->assertTrue($response->isSuccess());
+        $this->assertInstanceOf('Illuminate\Support\Collection', $response);
     }
 
     /** @test */
@@ -84,7 +84,7 @@ class TransportTest extends TestCase
         $response = $this->getClient()->api('Transport')->transactions();
 
         // Assert...
-        $this->assertTrue($response->isSuccess());
+        $this->assertInstanceOf('Illuminate\Support\Collection', $response);
     }
 
     /** @test */
@@ -97,7 +97,7 @@ class TransportTest extends TestCase
         $response = $this->getClient()->api('Transport')->transactionsFromIds($ids);
 
         // Assert...
-        $this->assertTrue($response->isSuccess());
+        $this->assertInstanceOf('Illuminate\Support\Collection', $response);
     }
 
     /** @test */
@@ -110,7 +110,7 @@ class TransportTest extends TestCase
         $response = $this->getClient()->api('Transport')->createTransactions($transactions);
 
         // Assert...
-        $this->assertTrue($response->isSuccess());
+        $this->assertInstanceOf('Illuminate\Support\Collection', $response);
     }
 
     /** @test */
@@ -120,7 +120,7 @@ class TransportTest extends TestCase
         $response = $this->getClient()->api('Transport')->height();
 
         // Assert...
-        $this->assertTrue($response->isSuccess());
+        $this->assertInstanceOf('Illuminate\Support\Collection', $response);
     }
 
     /** @test */
@@ -130,6 +130,6 @@ class TransportTest extends TestCase
         $response = $this->getClient()->api('Transport')->status();
 
         // Assert...
-        $this->assertTrue($response->isSuccess());
+        $this->assertInstanceOf('Illuminate\Support\Collection', $response);
     }
 }

@@ -13,7 +13,7 @@ declare(strict_types=1);
 
 namespace BrianFaust\Ark\API;
 
-use BrianFaust\Http\HttpResponse;
+use Illuminate\Support\Collection;
 
 class Peer extends AbstractAPI
 {
@@ -23,11 +23,11 @@ class Peer extends AbstractAPI
      * @param string $ip
      * @param int    $port
      *
-     * @return \BrianFaust\Http\HttpResponse
+     * @return \Illuminate\Support\Collection
      */
-    public function peer(string $ip, int $port): HttpResponse
+    public function peer(string $ip, int $port): Collection
     {
-        return $this->client->get('api/peers/get', compact('ip', 'port'));
+        return $this->get('api/peers/get', compact('ip', 'port'));
     }
 
     /**
@@ -35,20 +35,20 @@ class Peer extends AbstractAPI
      *
      * @param array $parameters
      *
-     * @return \BrianFaust\Http\HttpResponse
+     * @return \Illuminate\Support\Collection
      */
-    public function peers(array $parameters = []): HttpResponse
+    public function peers(array $parameters = []): Collection
     {
-        return $this->client->get('api/peers', $parameters);
+        return $this->get('api/peers', $parameters);
     }
 
     /**
      * Get the peer version.
      *
-     * @return \BrianFaust\Http\HttpResponse
+     * @return \Illuminate\Support\Collection
      */
-    public function version(): HttpResponse
+    public function version(): Collection
     {
-        return $this->client->get('api/peers/version');
+        return $this->get('api/peers/version');
     }
 }

@@ -13,37 +13,37 @@ declare(strict_types=1);
 
 namespace BrianFaust\Ark\API;
 
-use BrianFaust\Http\HttpResponse;
+use Illuminate\Support\Collection;
 
 class Loader extends AbstractAPI
 {
     /**
      * Get the blockchain status.
      *
-     * @return \BrianFaust\Http\HttpResponse
+     * @return \Illuminate\Support\Collection
      */
-    public function status(): HttpResponse
+    public function status(): Collection
     {
-        return $this->client->get('api/loader/status');
+        return $this->get('api/loader/status');
     }
 
     /**
      * Get the synchronisation status of the client.
      *
-     * @return \BrianFaust\Http\HttpResponse
+     * @return \Illuminate\Support\Collection
      */
-    public function sync(): HttpResponse
+    public function sync(): Collection
     {
-        return $this->client->get('api/loader/status/sync');
+        return $this->get('api/loader/status/sync');
     }
 
     /**
      * Auto-configure the client loader.
      *
-     * @return \BrianFaust\Http\HttpResponse
+     * @return \Illuminate\Support\Collection
      */
-    public function autoconfigure(): HttpResponse
+    public function autoconfigure(): Collection
     {
-        return $this->client->get('api/loader/autoconfigure');
+        return $this->get('api/loader/autoconfigure');
     }
 }

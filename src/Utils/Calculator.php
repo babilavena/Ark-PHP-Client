@@ -169,6 +169,10 @@ class Calculator
             return $value;
         }
 
+        if (strpos((string) $value, ',')) {
+            return (float) str_replace(',', null, $value);
+        }
+
         if (strlen((string) $value) >= 9) {
             return $value / 10 ** 8;
         }

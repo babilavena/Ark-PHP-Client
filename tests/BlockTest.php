@@ -28,7 +28,7 @@ class BlockTest extends TestCase
         $response = $this->getClient()->api('Block')->block($id);
 
         // Assert...
-        $this->assertTrue($response->isSuccess());
+        $this->assertInstanceOf('Illuminate\Support\Collection', $response);
     }
 
     /** @test */
@@ -38,7 +38,7 @@ class BlockTest extends TestCase
         $response = $this->getClient()->api('Block')->blocks();
 
         // Assert...
-        $this->assertTrue($response->isSuccess());
+        $this->assertInstanceOf('Illuminate\Support\Collection', $response);
     }
 
     /** @test */
@@ -48,7 +48,7 @@ class BlockTest extends TestCase
         $response = $this->getClient()->api('Block')->epoch();
 
         // Assert...
-        $this->assertTrue($response->isSuccess());
+        $this->assertInstanceOf('Illuminate\Support\Collection', $response);
     }
 
     /** @test */
@@ -58,7 +58,7 @@ class BlockTest extends TestCase
         $response = $this->getClient()->api('Block')->height();
 
         // Assert...
-        $this->assertTrue($response->isSuccess());
+        $this->assertInstanceOf('Illuminate\Support\Collection', $response);
     }
 
     /** @test */
@@ -68,7 +68,7 @@ class BlockTest extends TestCase
         $response = $this->getClient()->api('Block')->nethash();
 
         // Assert...
-        $this->assertTrue($response->isSuccess());
+        $this->assertInstanceOf('Illuminate\Support\Collection', $response);
     }
 
     /** @test */
@@ -78,7 +78,7 @@ class BlockTest extends TestCase
         $response = $this->getClient()->api('Block')->fee();
 
         // Assert...
-        $this->assertTrue($response->isSuccess());
+        $this->assertInstanceOf('Illuminate\Support\Collection', $response);
     }
 
     /** @test */
@@ -88,7 +88,7 @@ class BlockTest extends TestCase
         $response = $this->getClient()->api('Block')->fees();
 
         // Assert...
-        $this->assertTrue($response->isSuccess());
+        $this->assertInstanceOf('Illuminate\Support\Collection', $response);
     }
 
     /** @test */
@@ -98,7 +98,7 @@ class BlockTest extends TestCase
         $response = $this->getClient()->api('Block')->milestone();
 
         // Assert...
-        $this->assertTrue($response->isSuccess());
+        $this->assertInstanceOf('Illuminate\Support\Collection', $response);
     }
 
     /** @test */
@@ -108,7 +108,7 @@ class BlockTest extends TestCase
         $response = $this->getClient()->api('Block')->reward();
 
         // Assert...
-        $this->assertTrue($response->isSuccess());
+        $this->assertInstanceOf('Illuminate\Support\Collection', $response);
     }
 
     /** @test */
@@ -118,7 +118,7 @@ class BlockTest extends TestCase
         $response = $this->getClient()->api('Block')->supply();
 
         // Assert...
-        $this->assertTrue($response->isSuccess());
+        $this->assertInstanceOf('Illuminate\Support\Collection', $response);
     }
 
     /** @test */
@@ -128,6 +128,6 @@ class BlockTest extends TestCase
         $response = $this->getClient()->api('Block')->status();
 
         // Assert...
-        $this->assertTrue($response->isSuccess());
+        $this->assertInstanceOf('Illuminate\Support\Collection', $response);
     }
 }

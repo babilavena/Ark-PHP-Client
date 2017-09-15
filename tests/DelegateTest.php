@@ -25,33 +25,33 @@ class DelegateTest extends TestCase
         $response = $this->getClient()->api('Delegate')->count();
 
         // Assert...
-        $this->assertTrue($response->isSuccess());
+        $this->assertInstanceOf('Illuminate\Support\Collection', $response);
     }
 
     /** @test */
     public function can_search()
     {
         // Arrange...
-        $q = str_random(34);
+        $q = 'Aan1H7m2T6yBVGjRBAa8HYW8xdfoPmrNwD';
 
         // Act...
         $response = $this->getClient()->api('Delegate')->search($q);
 
         // Assert...
-        $this->assertTrue($response->isSuccess());
+        $this->assertInstanceOf('Illuminate\Support\Collection', $response);
     }
 
     /** @test */
     public function can_get_voters()
     {
         // Arrange...
-        $publicKey = str_random(34);
+        $publicKey = 'Aan1H7m2T6yBVGjRBAa8HYW8xdfoPmrNwD';
 
         // Act...
         $response = $this->getClient()->api('Delegate')->voters($publicKey);
 
         // Assert...
-        $this->assertTrue($response->isSuccess());
+        $this->assertInstanceOf('Illuminate\Support\Collection', $response);
     }
 
     /** @test */
@@ -61,7 +61,7 @@ class DelegateTest extends TestCase
         $response = $this->getClient()->api('Delegate')->delegate();
 
         // Assert...
-        $this->assertTrue($response->isSuccess());
+        $this->assertInstanceOf('Illuminate\Support\Collection', $response);
     }
 
     /** @test */
@@ -71,7 +71,7 @@ class DelegateTest extends TestCase
         $response = $this->getClient()->api('Delegate')->delegates();
 
         // Assert...
-        $this->assertTrue($response->isSuccess());
+        $this->assertInstanceOf('Illuminate\Support\Collection', $response);
     }
 
     /** @test */
@@ -81,33 +81,33 @@ class DelegateTest extends TestCase
         $response = $this->getClient()->api('Delegate')->fee();
 
         // Assert...
-        $this->assertTrue($response->isSuccess());
+        $this->assertInstanceOf('Illuminate\Support\Collection', $response);
     }
 
     /** @test */
     public function can_get_forged_by_account()
     {
         // Arrange...
-        $generatorPublicKey = str_random(34);
+        $generatorPublicKey = 'Aan1H7m2T6yBVGjRBAa8HYW8xdfoPmrNwD';
 
         // Act...
         $response = $this->getClient()->api('Delegate')->forgedByAccount($generatorPublicKey);
 
         // Assert...
-        $this->assertTrue($response->isSuccess());
+        $this->assertInstanceOf('Illuminate\Support\Collection', $response);
     }
 
     /** @test */
     public function can_add_delegate()
     {
         // Arrange...
-        $secret = str_random(34);
+        $secret = 'Aan1H7m2T6yBVGjRBAa8HYW8xdfoPmrNwD';
 
         // Act...
         $response = $this->getClient()->api('Delegate')->create($secret);
 
         // Assert...
-        $this->assertTrue($response->isSuccess());
+        $this->assertInstanceOf('Illuminate\Support\Collection', $response);
     }
 
     /** @test */
@@ -117,6 +117,6 @@ class DelegateTest extends TestCase
         $response = $this->getClient()->api('Delegate')->nextForgers();
 
         // Assert...
-        $this->assertTrue($response->isSuccess());
+        $this->assertInstanceOf('Illuminate\Support\Collection', $response);
     }
 }

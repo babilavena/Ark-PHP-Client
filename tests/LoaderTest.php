@@ -25,7 +25,7 @@ class LoaderTest extends TestCase
         $response = $this->getClient()->api('Loader')->status();
 
         // Assert...
-        $this->assertTrue($response->isSuccess());
+        $this->assertInstanceOf('Illuminate\Support\Collection', $response);
     }
 
     /** @test */
@@ -35,7 +35,7 @@ class LoaderTest extends TestCase
         $response = $this->getClient()->api('Loader')->sync();
 
         // Assert...
-        $this->assertTrue($response->isSuccess());
+        $this->assertInstanceOf('Illuminate\Support\Collection', $response);
     }
 
     /** @test */
@@ -45,6 +45,6 @@ class LoaderTest extends TestCase
         $response = $this->getClient()->api('Loader')->autoconfigure();
 
         // Assert...
-        $this->assertTrue($response->isSuccess());
+        $this->assertInstanceOf('Illuminate\Support\Collection', $response);
     }
 }
