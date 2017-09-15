@@ -24,7 +24,7 @@ class AccountTest extends TestCase
     public function can_get_balance()
     {
         // Arrange...
-        $address = 'Aan1H7m2T6yBVGjRBAa8HYW8xdfoPmrNwD';
+        $address = str_random(34);
 
         // Act...
         $response = $this->getClient()->api('Account')->balance($address);
@@ -37,7 +37,7 @@ class AccountTest extends TestCase
     public function can_get_publickey()
     {
         // Arrange...
-        $address = 'Aan1H7m2T6yBVGjRBAa8HYW8xdfoPmrNwD';
+        $address = str_random(34);
 
         // Act...
         $response = $this->getClient()->api('Account')->publicKey($address);
@@ -75,13 +75,10 @@ class AccountTest extends TestCase
     /** @test */
     public function can_add_delegates()
     {
-        // Skip...
-        $this->markTestSkipped('This requires secrets and will only be tested on local machines.');
-
         // Arrange...
-        $secret = str_random(34);
-        $publicKey = '026972bdafa405f33a293b047798ff9cef3d2c3ab59e89c04d394df35147c17921';
-        $secondSecret = str_random(34);
+        $secret = 'Aan1H7m2T6yBVGjRBAa8HYW8xdfoPmrNwD';
+        $publicKey = 'Aan1H7m2T6yBVGjRBAa8HYW8xdfoPmrNwD';
+        $secondSecret = 'Aan1H7m2T6yBVGjRBAa8HYW8xdfoPmrNwD';
 
         // Act...
         $response = $this->getClient()->api('Account')->createDelegates($secret, $publicKey, $secondSecret);

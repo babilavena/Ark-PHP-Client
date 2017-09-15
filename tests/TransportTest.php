@@ -55,7 +55,7 @@ class TransportTest extends TestCase
     public function can_get_block()
     {
         // Arrange...
-        $id = 'Aan1H7m2T6yBVGjRBAa8HYW8xdfoPmrNwD';
+        $id = str_random(34);
 
         // Act...
         $response = $this->getClient()->api('Transport')->block($id);

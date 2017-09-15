@@ -90,7 +90,7 @@ class Nucleid
 
         $output = shell_exec("nucleid -r {$this->require} -e {$this->execute} {$this->buildArguments()} --ojson 2>&1 &");
 
-        return json_decode(str_replace("\n", null, $output));
+        return json_decode($output);
     }
 
     /**
