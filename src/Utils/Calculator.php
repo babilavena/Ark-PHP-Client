@@ -36,6 +36,11 @@ class Calculator
     private $votingPool;
 
     /**
+     * @var float
+     */
+    private $excludedVotes = 0;
+
+    /**
      * Create a new Calculator instance.
      *
      * @param int $dailyProduction
@@ -138,8 +143,6 @@ class Calculator
     }
 
     /**
-     * Calculate the ARK profit share per second.
-     *
      * @param int $value
      *
      * @return float
@@ -147,6 +150,16 @@ class Calculator
     public function setVotingPool(int $value)
     {
         $this->votingPool = $this->toFixed($value);
+    }
+
+    /**
+     * @param int $value
+     *
+     * @return float
+     */
+    public function setExcludedVotes(int $value)
+    {
+        $this->excludedVotes = $this->toFixed($value);
     }
 
     /**
@@ -158,7 +171,7 @@ class Calculator
      */
     public function voteWeight(int $value): float
     {
-        return $this->toFixed($value) / $this->votingPool;
+        return $this->toFixed($value) / ($this->votingPool - $this->excludedVotes);
     }
 
     /**
