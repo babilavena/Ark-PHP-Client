@@ -14,8 +14,6 @@
          stopOnError="false"
          stopOnFailure="false"
          verbose="true"
-         printerFile="vendor/coderabbi/phpumoji/src/EmojiPrinter.php"
-         printerClass="Coderabbi\Phpumoji\EmojiPrinter"
 >
     <testsuites>
         <testsuite name="Ark PHP Client Test Suite">
@@ -28,7 +26,9 @@
         </whitelist>
     </filter>
     <php>
+        <env name="ARK_TESTING_IP" value=""/>
         <env name="ARK_TESTING_SECRET" value=""/>
+        <env name="ARK_TESTING_SECOND_SECRET" value=""/>
         <env name="ARK_TESTING_WIF" value=""/>
     </php>
 </phpunit>

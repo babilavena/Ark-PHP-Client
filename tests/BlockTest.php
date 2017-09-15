@@ -22,7 +22,7 @@ class BlockTest extends TestCase
     public function can_get_block()
     {
         // Arrange...
-        $id = str_random(34);
+        $id = '579681458494339491';
 
         // Act...
         $response = $this->getClient()->api('Block')->block($id);

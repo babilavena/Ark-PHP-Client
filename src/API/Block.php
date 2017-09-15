@@ -88,7 +88,7 @@ class Block extends AbstractAPI
      */
     public function fees(): Collection
     {
-        return $this->get('api/blocks/getFees')['fees'];
+        return $this->get('api/blocks/getFees');
     }
 
     /**

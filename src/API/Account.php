@@ -66,7 +66,7 @@ class Account extends AbstractAPI
     }
 
     /**
-     * Add a new delegate to an account.
+     * Vote for the given delegate.
      *
      * @param string $secret
      * @param string $publicKey
@@ -74,7 +74,7 @@ class Account extends AbstractAPI
      *
      * @return \Illuminate\Support\Collection
      */
-    public function createDelegates(string $secret, string $publicKey, string $secondSecret): Collection
+    public function vote(string $secret, string $publicKey, string $secondSecret): Collection
     {
         return $this->put('api/accounts/delegates', compact('secret', 'publicKey', 'secondSecret'));
     }

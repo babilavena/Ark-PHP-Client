@@ -22,7 +22,7 @@ class TransactionTest extends TestCase
     public function can_get_transaction()
     {
         // Arrange...
-        $id = str_random(34);
+        $id = '52cb2975b2dec5cd21beac470055a254a84169e51b1a72387757a340509a5049';
 
         // Act...
         $response = $this->getClient()->api('Transaction')->transaction($id);
@@ -45,7 +45,7 @@ class TransactionTest extends TestCase
     public function can_get_unconfirmed_transaction()
     {
         // Arrange...
-        $id = str_random(34);
+        $id = '52cb2975b2dec5cd21beac470055a254a84169e51b1a72387757a340509a5049';
 
         // Act...
         $response = $this->getClient()->api('Transaction')->unconfirmedTransaction($id);
@@ -67,8 +67,11 @@ class TransactionTest extends TestCase
     /** @test */
     public function can_add_transactions()
     {
+        // Skip...
+        $this->markTestSkipped('This requires secrets and will only be tested on local machines.');
+
         // Arrange...
-        $secret = 'Aan1H7m2T6yBVGjRBAa8HYW8xdfoPmrNwD';
+        $secret = env('ARK_TESTING_SECRET');
         $amount = rand();
         $recipientId = 'Aan1H7m2T6yBVGjRBAa8HYW8xdfoPmrNwD';
 
