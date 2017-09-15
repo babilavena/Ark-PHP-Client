@@ -16,11 +16,6 @@ namespace BrianFaust\Ark\Utils;
 class Calculator
 {
     /**
-     * @var int
-     */
-    private $fixedPoint = 100000000;
-
-    /**
      * @var float
      */
     private $dailyProduction;
@@ -36,17 +31,12 @@ class Calculator
     private $votingPool;
 
     /**
-     * @var float
-     */
-    private $excludedVotes = 0;
-
-    /**
      * Create a new Calculator instance.
      *
-     * @param int $dailyProduction
-     * @param int $profitShare
+     * @param int|float $dailyProduction
+     * @param int|float $profitShare
      */
-    public function __construct(int $dailyProduction, int $profitShare)
+    public function __construct($dailyProduction, $profitShare)
     {
         $this->dailyProduction = $dailyProduction;
         $this->profitShare = $profitShare;
@@ -55,11 +45,11 @@ class Calculator
     /**
      * Calculate the ARK profit share per second.
      *
-     * @param int $value
+     * @param int|float $value
      *
      * @return float
      */
-    public function perSecond(int $value): float
+    public function perSecond($value): float
     {
         return $this->perMinute($value) / 60;
     }
@@ -67,11 +57,11 @@ class Calculator
     /**
      * Calculate the ARK profit share per minute.
      *
-     * @param int $value
+     * @param int|float $value
      *
      * @return float
      */
-    public function perMinute(int $value): float
+    public function perMinute($value): float
     {
         return $this->perHour($value) / 60;
     }
@@ -79,11 +69,11 @@ class Calculator
     /**
      * Calculate the ARK profit share per hour.
      *
-     * @param int $value
+     * @param int|float $value
      *
      * @return float
      */
-    public function perHour(int $value): float
+    public function perHour($value): float
     {
         return $this->perDay($value) / 24;
     }
@@ -91,11 +81,11 @@ class Calculator
     /**
      * Calculate the ARK profit share per day.
      *
-     * @param int $value
+     * @param int|float $value
      *
      * @return float
      */
-    public function perDay(int $value): float
+    public function perDay($value): float
     {
         $profitShare = $this->profitShare;
 
@@ -109,11 +99,11 @@ class Calculator
     /**
      * Calculate the ARK profit share per week.
      *
-     * @param int $value
+     * @param int|float $value
      *
      * @return float
      */
-    public function perWeek(int $value): float
+    public function perWeek($value): float
     {
         return $this->perDay($value) * 7;
     }
@@ -121,11 +111,11 @@ class Calculator
     /**
      * Calculate the ARK profit share per month.
      *
-     * @param int $value
+     * @param int|float $value
      *
      * @return float
      */
-    public function perMonth(int $value): float
+    public function perMonth($value): float
     {
         return $this->perWeek($value) * 4;
     }
@@ -133,60 +123,60 @@ class Calculator
     /**
      * Calculate the ARK profit share per year.
      *
-     * @param int $value
+     * @param int|float $value
      *
      * @return float
      */
-    public function perYear(int $value): float
+    public function perYear($value): float
     {
         return $this->perMonth($value) * 12;
     }
 
     /**
-     * @param int $value
+     * Calculate the ARK profit share per second.
+     *
+     * @param int|float $value
      *
      * @return float
      */
-    public function setVotingPool(int $value)
+    public function setVotingPool($value)
     {
-        $this->votingPool = $this->toFixed($value);
-    }
-
-    /**
-     * @param int $value
-     *
-     * @return float
-     */
-    public function setExcludedVotes(int $value)
-    {
-        $this->excludedVotes = $this->toFixed($value);
+        $this->votingPool = (int) str_replace(',', null, $value);
     }
 
     /**
      * Calculate the vote weight for the given value.
      *
-     * @param int $value
+     * @param int|float $value
      *
      * @return float
      */
-    public function voteWeight(int $value): float
+    private function voteWeight($value): float
     {
-        return $this->toFixed($value) / ($this->votingPool - $this->excludedVotes);
+        return $this->formatArkBalance($value) / $this->votingPool;
     }
 
     /**
-     * Formats a number using fixed-point notation.
+     * Format the given value to assure we are working with a float.
      *
-     * @param  int    $value
+     * @param int|float $value
      *
-     * @return int
+     * @return float
      */
-    private function toFixed(int $value): int
+    private function formatArkBalance($value): float
     {
-        if ($value < $this->fixedPoint) {
-            $value *= $this->fixedPoint;
+        if (is_float($value)) {
+            return $value;
         }
 
-        return $value;
+        if (strpos((string) $value, ',')) {
+            return (float) str_replace(',', null, $value);
+        }
+
+        if (strlen((string) $value) >= 9) {
+            return $value / 10 ** 8;
+        }
+
+        return (float) $value;
     }
 }

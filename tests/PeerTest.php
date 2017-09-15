@@ -42,8 +42,8 @@ class PeerTest extends TestCase
     public function can_get_peer()
     {
         // Arrange...
-        $ip = env('ARK_TESTING_IP');
-        $port = 4001;
+        $ip = 'Aan1H7m2T6yBVGjRBAa8HYW8xdfoPmrNwD';
+        $port = rand();
 
         // Act...
         $response = $this->getClient()->api('Peer')->peer($ip, $port);

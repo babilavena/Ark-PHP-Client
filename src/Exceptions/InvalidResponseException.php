@@ -20,9 +20,9 @@ class InvalidResponseException extends RuntimeException
     /**
      * Create a new exception instance.
      *
-     * @param null|string $message
+     * @param string $message
      */
-    public function __construct(?string $message)
+    public function __construct(string $message)
     {
         parent::__construct($message);
     }

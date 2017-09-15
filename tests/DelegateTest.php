@@ -32,7 +32,7 @@ class DelegateTest extends TestCase
     public function can_search()
     {
         // Arrange...
-        $q = 'yin';
+        $q = 'Aan1H7m2T6yBVGjRBAa8HYW8xdfoPmrNwD';
 
         // Act...
         $response = $this->getClient()->api('Delegate')->search($q);
@@ -45,7 +45,7 @@ class DelegateTest extends TestCase
     public function can_get_voters()
     {
         // Arrange...
-        $publicKey = '026972bdafa405f33a293b047798ff9cef3d2c3ab59e89c04d394df35147c17921';
+        $publicKey = 'Aan1H7m2T6yBVGjRBAa8HYW8xdfoPmrNwD';
 
         // Act...
         $response = $this->getClient()->api('Delegate')->voters($publicKey);
@@ -58,9 +58,7 @@ class DelegateTest extends TestCase
     public function can_get_delegate()
     {
         // Act...
-        $response = $this->getClient()->api('Delegate')->delegate([
-            'publicKey' => '03abd20e654fa87af4efcdbbb4a0dd82a01cf3e88e72269809b698d785b98b09b2',
-        ]);
+        $response = $this->getClient()->api('Delegate')->delegate();
 
         // Assert...
         $this->assertInstanceOf('Illuminate\Support\Collection', $response);
@@ -90,7 +88,7 @@ class DelegateTest extends TestCase
     public function can_get_forged_by_account()
     {
         // Arrange...
-        $generatorPublicKey = '026972bdafa405f33a293b047798ff9cef3d2c3ab59e89c04d394df35147c17921';
+        $generatorPublicKey = 'Aan1H7m2T6yBVGjRBAa8HYW8xdfoPmrNwD';
 
         // Act...
         $response = $this->getClient()->api('Delegate')->forgedByAccount($generatorPublicKey);
@@ -102,13 +100,8 @@ class DelegateTest extends TestCase
     /** @test */
     public function can_add_delegate()
     {
-        // Skip...
-        $this->markTestSkipped('This requires secrets and will only be tested on local machines.');
-
         // Arrange...
-        $secret = env('ARK_TESTING_SECRET');
-        $username = str_random(34);
-        $secondSecret = env('ARK_TESTING_SECOND_SECRET');
+        $secret = 'Aan1H7m2T6yBVGjRBAa8HYW8xdfoPmrNwD';
 
         // Act...
         $response = $this->getClient()->api('Delegate')->create($secret);

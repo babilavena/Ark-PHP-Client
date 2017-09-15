@@ -31,12 +31,9 @@ class SignatureTest extends TestCase
     /** @test */
     public function can_add_signature()
     {
-        // Skip...
-        $this->markTestSkipped('This requires secrets and will only be tested on local machines.');
-
         // Arrange...
-        $secret = env('ARK_TESTING_SECRET');
-        $secondSecret = env('ARK_TESTING_SECOND_SECRET');
+        $secret = 'Aan1H7m2T6yBVGjRBAa8HYW8xdfoPmrNwD';
+        $secondSecret = 'Aan1H7m2T6yBVGjRBAa8HYW8xdfoPmrNwD';
 
         // Act...
         $response = $this->getClient()->api('Signature')->create($secret, $secondSecret);
